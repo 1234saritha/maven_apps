@@ -14,6 +14,11 @@ node {
       } 
     }
    
+   stage('Sonar CodeAnalysis') {
+     withMaven(jdk: 'jdk-1.8', maven: 'maven') {
+        sh 'mvn sonar:sonar -Dsonar.projectKey=maven_apps -Dsonar.organization=itrainbatman -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=0767bb0a33926d7ea765c0ef95c6f8d67cdd5987'
+      }  
+    }
    
    stage('Deploy to Dev') {
      
