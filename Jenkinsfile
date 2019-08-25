@@ -15,7 +15,7 @@ node {
     }
    stage('Sonar CodeAnalysis') {
      withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
-        sh 'mvn sonar:sonar -Dsonar.projectKey=maven_apps -Dsonar.organization=itrainbatman -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=0767bb0a33926d7ea765c0ef95c6f8d67cdd5987'
+        sh 'mvn sonar:sonar Dsonar.projectKey=com.sonar.practice -Dsonar.organization=collect -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=c57d9c7587386932f78c5a05405661d64e10ac09'
       }  
     }
    stage('Package to Jfrog') {
