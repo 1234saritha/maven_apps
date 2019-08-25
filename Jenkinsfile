@@ -1,25 +1,25 @@
 node {
    
    stage('Code Checkout') { 
-     git credentialsId: 'githubID', url: 'https://github.com/itrainbatman/maven_apps.git' 
+     git credentialsId: 'githubID', url: 'https://github.com/1234saritha/maven_apps.git' 
     }
    stage('Build') {
-    withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
+    withMaven(jdk: 'jdk-1.8', maven: 'maven') {
      sh 'mvn clean compile'
       }
     }
    stage('Unit Test run') {
-    withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
+    withMaven(jdk: 'jdk-1.8', maven: 'maven') {
      sh 'mvn test'
       } 
     }
    stage('Sonar CodeAnalysis') {
-     withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
+     withMaven(jdk: 'jdk-1.8', maven: 'maven') {
         sh 'mvn sonar:sonar -Dsonar.projectKey=maven_apps -Dsonar.organization=itrainbatman -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=0767bb0a33926d7ea765c0ef95c6f8d67cdd5987'
       }  
     }
    stage('Package to Jfrog') {
-    withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
+    withMaven(jdk: 'jdk-1.8', maven: 'maven') {
      sh 'mvn package'
       }
     }
